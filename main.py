@@ -93,28 +93,28 @@ dis = {
     'Hepatitis C': 'হেপাটাইটিস সি'
 }
 
+data = pd.read_csv('Database/Training.csv')
+df = pd.DataFrame(data)
+
+cols = df.columns[:-1]
+
+x = df[cols]  # x is the feature
+y = df['prognosis']  # y is the target
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
+
+features = cols
+feature_dict = {}
+
+for i, f in enumerate(features):
+    feature_dict[f] = i
+
 
 def prediction():
-    data = pd.read_csv('Database/Training.csv')
-    df = pd.DataFrame(data)
-
-    cols = df.columns[:-1]
-
-    x = df[cols]  # x is the feature
-    y = df['prognosis']  # y is the target
-
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
-
-    features = cols
-    feature_dict = {}
-
-    for i, f in enumerate(features):
-        feature_dict[f] = i
+    
 
     # symptoms = ['joint_pain', 'muscle_wasting']
     symptoms = [GUI.p.get(), GUI.en.get(), GUI.bb.get(), GUI.ee.get(), GUI.hh.get()]
-
-    print(symptoms)
 
     symptoms = [trix[j] for j in symptoms if j != '']
 
@@ -126,7 +126,7 @@ def prediction():
         pos.append(feature_dict[symptoms[i]])
 
     sample_x = [1.0 if i in pos else 0.0 for i in range(len(features))]
-    sample_x = [sample_x]  # np.array(sample_x).reshape(1, len(sample_x))
+    sample_x = [sample_x]
 
     # print(sample_x)
 
@@ -173,9 +173,9 @@ def prediction():
 
     # print(dis.get(*map(str, random.predict(sample_x))))
 
-    y_pred = random.predict(x_test)
+    # y_pred = random.predict(x_test)
 
-    accuracy = accuracy_score(y_test, y_pred)
+    # accuracy = accuracy_score(y_test, y_pred)
 
     # print(f"Accuracy: {accuracy * 100}%")
 
@@ -203,8 +203,8 @@ def prediction():
 
     # print(dis.get(*map(str, Logic.predict(sample_x))))
 
-    y_pred = Logic.predict(x_test)
-    accuracy = accuracy_score(y_test, y_pred)
+    # y_pred = Logic.predict(x_test)
+    # accuracy = accuracy_score(y_test, y_pred)
     # print(f"Accuracy: {accuracy * 100}%")
 
     magic = list(hack_set)
