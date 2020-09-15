@@ -246,7 +246,7 @@ final_result.grid(row=8, column=0, pady=(0, 20), padx=(60, 0), columnspan=2)
 final_result.config(font=('Consolas', 20, 'bold'))
 final_result.bind("<Key>", lambda e: "break")
 
-tt = Label(frame, text='বিঃদ্রঃ ভালো ফলাফল পেতে কমপক্ষে ৩ টি লক্ষন ব্যবহার করুন')
+tt = Label(frame, text='বিঃদ্রঃ ভালো ফলাফল পেতে ৩ টি লক্ষন ব্যবহার করুন')
 tt.grid(row=11, column=0, columnspan=2, padx=(60, 0))
 tt.config(font=('', 15, 'bold'))
 
